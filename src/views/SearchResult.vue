@@ -19,6 +19,8 @@ const getData = () => {
 
 <template>
   <div class="p-12">
+    <h4 class="text-2xl font-bold text-center mb-4">{{ hotels.length }} hoteis encontrados</h4>
+
     <SortSection @sort="getData" />
 
     <div class="flex flex-wrap justify-center">

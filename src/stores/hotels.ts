@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import fetchData from '@/services/mock'
+import { fetchData, submitReservation } from '@/services/mock'
 
 export const useHotelsStore = defineStore('hotels', {
   state: () => ({
@@ -17,15 +17,11 @@ export const useHotelsStore = defineStore('hotels', {
       checkIn: '',
       checkOut: ''
     },
-    loading: false
+    loading: false,
+    hotelId: null,
+    infoModal: null
   }),
   getters: {
-    getHotels() {
-      return this.hotels
-    },
-    getFavorites() {
-      return this.favorites
-    },
     getSortedHotels() {
       const hotels = this.hotels.slice()
 
@@ -50,6 +46,29 @@ export const useHotelsStore = defineStore('hotels', {
       }
 
       return hotels
+    },
+    getFavorites() {
+      return this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
+    },
+    lowestPriceHotelFromFavorites() {
+      const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
+
+      if (favorites.length === 0) return null
+
+      return favorites.reduce((lowest, hotel) => {
+        if (hotel.price < lowest.price) return hotel
+        return lowest
+      })
+    },
+    bestRatingHotelFromFavorites() {
+      const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
+
+      if (favorites.length === 0) return null
+
+      return favorites.reduce((best, hotel) => {
+        if (hotel.rating > best.rating) return hotel
+        return best
+      })
     }
   },
   actions: {
@@ -64,13 +83,20 @@ export const useHotelsStore = defineStore('hotels', {
         return false
       }
     },
-    toggleFavorite(hotel) {
-      const index = this.favorites.findIndex((h) => h.id === hotel.id)
-
-      if (index === -1) {
-        this.favorites.push(hotel)
+    async reserveHotel(id) {
+      try {
+        this.hotelId = id
+        const response = await submitReservation(id)
+        this.infoModal = response
+      } catch {
+        return false
+      }
+    },
+    toggleFavorite(id) {
+      if (this.favorites.includes(id)) {
+        this.favorites = this.favorites.filter((favorite) => favorite !== id)
       } else {
-        this.favorites.splice(index, 1)
+        this.favorites.push(id)
       }
     },
     setSearch(search) {

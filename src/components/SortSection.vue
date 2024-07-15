@@ -16,7 +16,7 @@ watch([sortByRating, sortByValue], () => {
 
 <template>
   <div>
-    <div class="flex items-center p-5">
+    <div class="flex items-center justify-end px-5 py-3">
       <div>
         <span class="text-sm text-gray-600 dark:text-gray-300">Sort by Rating:</span>
         <select v-model="sortByRating" class="mx-2 px-2 py-1 border rounded-md">
@@ -24,8 +24,8 @@ watch([sortByRating, sortByValue], () => {
           <option value="asc">Lowest to Highest</option>
         </select>
       </div>
-      <div>
-        <span class="text-sm text-gray-600 dark:text-gray-300">Sort by Value:</span>
+      <div class="ml-4">
+        <span class="text-sm text-gray-600 dark:text-gray-300">Sort by Price:</span>
         <select v-model="sortByValue" class="mx-2 px-2 py-1 border rounded-md">
           <option value="desc">Highest to Lowest</option>
           <option value="asc">Lowest to Highest</option>

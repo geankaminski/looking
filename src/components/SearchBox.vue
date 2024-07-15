@@ -29,8 +29,8 @@ const handleSearch = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center p-12">
-    <div class="mx-auto w-full max-w-[550px] bg-white">
+  <div class="flex items-center justify-center p-12 bg-secondary">
+    <div class="mx-auto w-full max-w-[550px] bg-white border border-primary rounded-md shadow-form">
       <form @submit.prevent="handleSearch" class="p-8 bg-white rounded-md shadow-form">
         <div class="mb-5">
           <label for="guest" class="mb-3 block text-base font-medium text-[#07074D]">Destino</label>
@@ -40,7 +40,7 @@ const handleSearch = async () => {
             name="guest"
             id="guest"
             placeholder="São Paulo"
-            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            class="w-full appearance-none rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           />
         </div>
 
@@ -55,7 +55,7 @@ const handleSearch = async () => {
             id="guest"
             placeholder="5"
             min="0"
-            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            class="w-full appearance-none rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           />
         </div>
 
@@ -70,7 +70,7 @@ const handleSearch = async () => {
             id="guest"
             placeholder="5"
             min="0"
-            class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            class="w-full appearance-none rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
           />
         </div>
 
@@ -85,7 +85,7 @@ const handleSearch = async () => {
                 type="date"
                 name="date"
                 id="date"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                class="w-full rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ const handleSearch = async () => {
                 type="date"
                 name="date"
                 id="date"
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                class="w-full rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
           </div>
@@ -109,9 +109,9 @@ const handleSearch = async () => {
           <button
             type="submit"
             :disabled="loading"
-            class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            class="w-full hover:shadow-form rounded-md bg-primary mt-4 py-2 px-8 text-center text-base font-semibold text-white outline-none"
           >
-            Procurar
+            Buscar hoteis
           </button>
         </div>
       </form>
