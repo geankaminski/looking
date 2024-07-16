@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
 import { storeToRefs } from 'pinia'
+
 import { useHotelsStore } from '@/stores/hotels'
 
 const hotelsStore = useHotelsStore()

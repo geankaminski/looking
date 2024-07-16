@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons'
+
 import { useHotelsStore } from '@/stores/hotels'
+
 import HotelCard from '@/components/HotelCard.vue'
 import PageTitle from '@/components/PageTitle.vue'
-import { ref } from 'vue'
 
 const hotelsStore = useHotelsStore()
 const favorites = ref(hotelsStore.getFavorites)
@@ -18,8 +23,14 @@ const favorites = ref(hotelsStore.getFavorites)
 
     <div v-else>
       <div class="text-center mb-4">
-        <p>Preço mais baixo: {{ hotelsStore.lowestPriceHotelFromFavorites.name }}</p>
-        <p>Melhor avaliação: {{ hotelsStore.bestRatingHotelFromFavorites.name }}</p>
+        <p class="font-semibold mb-2">
+          <FontAwesomeIcon :icon="faDollarSign" class="text-green" />
+          Preço mais baixo: {{ hotelsStore.lowestPriceHotelFromFavorites.name }}
+        </p>
+        <p class="font-semibold">
+          <FontAwesomeIcon :icon="faStar" class="text-yellow" />
+          Melhor avaliação: {{ hotelsStore.bestRatingHotelFromFavorites.name }}
+        </p>
       </div>
 
       <div class="flex flex-wrap justify-center">

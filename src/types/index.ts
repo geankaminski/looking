@@ -5,6 +5,7 @@ export interface Hotel {
   location: string
   rating: number
   price: number
+  image: string
 }
 
 export interface UserSearch {
@@ -13,6 +14,15 @@ export interface UserSearch {
   checkOut: string
   guests: number
   rooms: number
+}
+
+export interface UserData {
+  name: string
+  email: string
+  cardNumber: string
+  cardName: string
+  cvv: string
+  expiration: string
 }
 
 export interface Hotels {

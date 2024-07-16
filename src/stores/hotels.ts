@@ -1,28 +1,28 @@
 import { defineStore } from 'pinia'
+
 import { fetchData, submitReservation } from '@/services/mock'
+
+import type { UserSearch, Hotel } from '@/types'
 
 export const useHotelsStore = defineStore('hotels', {
   state: () => ({
-    /** @type {{ name: string, id: number, price: number, rating: number }[]} */
-    hotels: [],
-    /** @type {null | 'desc' | 'asc'} */
-    sortByValue: null,
-    /** @type {null | 'asc' | 'desc'} */
-    sortByRating: null,
-    favorites: [],
+    hotels: [] as Hotel[],
+    sortByValue: null as null | 'desc' | 'asc',
+    sortByRating: null as null | 'asc' | 'desc',
+    favorites: [] as number[],
     search: {
       location: '',
-      numberOfGuests: 1,
-      numberOfRooms: 1,
+      guests: 1,
+      rooms: 1,
       checkIn: '',
       checkOut: ''
-    },
+    } as UserSearch,
     loading: false,
-    hotelId: null,
-    infoModal: null
+    hotelId: null as null | number,
+    infoModal: null as null | string
   }),
   getters: {
-    getSortedHotels() {
+    getSortedHotels(): Hotel[] {
       const hotels = this.hotels.slice()
 
       if (this.sortByValue) {
@@ -47,10 +47,10 @@ export const useHotelsStore = defineStore('hotels', {
 
       return hotels
     },
-    getFavorites() {
+    getFavorites(): Hotel[] {
       return this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
     },
-    lowestPriceHotelFromFavorites() {
+    lowestPriceHotelFromFavorites(): Hotel | null {
       const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
 
       if (favorites.length === 0) return null
@@ -60,7 +60,7 @@ export const useHotelsStore = defineStore('hotels', {
         return lowest
       })
     },
-    bestRatingHotelFromFavorites() {
+    bestRatingHotelFromFavorites(): Hotel | null {
       const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
 
       if (favorites.length === 0) return null
@@ -72,10 +72,10 @@ export const useHotelsStore = defineStore('hotels', {
     }
   },
   actions: {
-    async fetchHotels() {
+    async fetchHotels(): Promise<boolean> {
       try {
         this.loading = true
-        const { hotels } = await fetchData()
+        const { hotels } = (await fetchData()) as { hotels: Hotel[] }
         this.hotels = hotels
         this.loading = false
         return true
@@ -83,26 +83,27 @@ export const useHotelsStore = defineStore('hotels', {
         return false
       }
     },
-    getHotelById(id) {
+    getHotelById(id: number): Hotel | undefined {
       return this.hotels.find((hotel) => hotel.id === id)
     },
-    async reserveHotel(id) {
+    async reserveHotel(id: number): Promise<boolean> {
       try {
         this.hotelId = id
-        const response = await submitReservation(id)
+        const response: string | null = (await submitReservation(id)) as string | null
         this.infoModal = response
+        return true
       } catch {
         return false
       }
     },
-    toggleFavorite(id) {
+    toggleFavorite(id: number): void {
       if (this.favorites.includes(id)) {
         this.favorites = this.favorites.filter((favorite) => favorite !== id)
       } else {
         this.favorites.push(id)
       }
     },
-    setSearch(search) {
+    setSearch(search: UserSearch): void {
       this.search = search
     }
   }

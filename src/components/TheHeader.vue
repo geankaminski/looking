@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { storeToRefs } from 'pinia'
+
 import { useHotelsStore } from '@/stores/hotels'
 
 const hotelsStore = useHotelsStore()

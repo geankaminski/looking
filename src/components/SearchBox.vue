@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useHotelsStore } from '@/stores/hotels'
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
+
+import { useHotelsStore } from '@/stores/hotels'
+
 import BaseInput from './BaseInput.vue'
 import BaseButton from './BaseButton.vue'
 import BaseCounter from './BaseCounter.vue'
+
 import type { UserSearch } from '@/types'
 
 const hotelsStore = useHotelsStore()
@@ -25,7 +28,9 @@ const userSearch = ref<UserSearch>({
 
 const handleSearch = async () => {
   setSearch(userSearch.value)
+
   const status = await fetchHotels()
+
   if (status) {
     router.push({ name: 'hotels' })
   }
@@ -36,6 +41,8 @@ const handleSearch = async () => {
   <div class="flex items-center justify-center p-12">
     <div class="mx-auto w-full max-w-[550px] bg-white border border-primary rounded-md shadow-form">
       <form @submit.prevent="handleSearch" class="p-8 bg-white rounded-md shadow-form">
+        <h4 class="text-2xl font-semibold text-center mb-3">Encontre hotéis</h4>
+
         <BaseInput
           label="Destino"
           v-model="userSearch.location"
@@ -49,6 +56,7 @@ const handleSearch = async () => {
           :number="userSearch.guests"
           @increment="userSearch.guests++"
           @decrement="userSearch.guests--"
+          class="mb-5"
         />
 
         <BaseCounter
@@ -56,10 +64,11 @@ const handleSearch = async () => {
           :number="userSearch.rooms"
           @increment="userSearch.rooms++"
           @decrement="userSearch.rooms--"
+          class="mb-5"
         />
 
-        <div class="-mx-3 flex flex-wrap">
-          <div class="w-full px-3 sm:w-1/2">
+        <div class="-mx-3 flex flex-wrap flex-row md:flex-col">
+          <div class="w-full px-3">
             <BaseInput
               label="Data de entrada"
               v-model="userSearch.checkIn"
@@ -69,7 +78,7 @@ const handleSearch = async () => {
               @update:model="userSearch.checkIn = $event"
             />
           </div>
-          <div class="w-full px-3 sm:w-1/2">
+          <div class="w-full px-3">
             <BaseInput
               label="Data de saída"
               v-model="userSearch.checkOut"

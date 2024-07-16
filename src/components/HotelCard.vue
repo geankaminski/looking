@@ -1,19 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import BaseButton from '@/components/BaseButton.vue'
 import { faHeart as faHeartSolid, faAward, faStar } from '@fortawesome/free-solid-svg-icons'
-import type { Hotel } from '@/types'
 
+import BaseButton from '@/components/BaseButton.vue'
 import { useHotelsStore } from '@/stores/hotels'
+
+import type { Hotel } from '@/types'
 
 const hotelsStore = useHotelsStore()
 const { toggleFavorite } = hotelsStore
 const { favorites } = storeToRefs(hotelsStore)
 
 const router = useRouter()
+
+const loadingImg = ref(true)
 
 const props = defineProps<{
   hotel: Hotel
@@ -34,9 +39,17 @@ const props = defineProps<{
         <FontAwesomeIcon :icon="faAward" class="text-xl" />
       </div>
     </div>
-    <a href="#">
-      <img class="rounded-t-lg" src="https://picsum.photos/500/300" alt="product image" />
-    </a>
+    <img
+      v-show="!loadingImg"
+      class="rounded-t-lg h-56 w-full transition-all duration-300 object-cover"
+      :src="props.hotel.image"
+      alt="product image"
+      @load="loadingImg = false"
+      @error="loadingImg = true"
+    />
+
+    <div v-if="loadingImg" class="animate-pulse w-full h-56 rounded-t-lg"></div>
+
     <div class="px-5 pb-5">
       <div class="flex items-center justify-between">
         <h5 class="text-xl font-semibold tracking-tight text-primary mt-2">
@@ -76,3 +89,21 @@ const props = defineProps<{
     </div>
   </div>
 </template>
+
+<style scoped>
+@keyframes pulse {
+  0% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #686868;
+  }
+  100% {
+    background-color: #f5f5f5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+</style>

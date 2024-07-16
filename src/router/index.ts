@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import SearchResult from '@/views/SearchResult.vue'
 import FavoritesView from '@/views/FavoritesView.vue'

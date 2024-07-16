@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { useHotelsStore } from '@/stores/hotels'
 import { useRouter } from 'vue-router'
+
+import { useHotelsStore } from '@/stores/hotels'
+
 import BaseInput from './BaseInput.vue'
 import BaseButton from './BaseButton.vue'
 

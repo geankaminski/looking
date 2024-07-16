@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
 import { useHotelsStore } from '@/stores/hotels'
+
 import HotelCard from '@/components/HotelCard.vue'
 import SortSection from '@/components/SortSection.vue'
 import PageTitle from '@/components/PageTitle.vue'
-import { onMounted, ref } from 'vue'
 
 const hotelsStore = useHotelsStore()
 

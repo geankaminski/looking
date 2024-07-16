@@ -11,5 +11,3 @@ const props = defineProps<{
     {{ props.label }}
   </button>
 </template>
-
-<style></style>

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHourglass } from '@fortawesome/free-regular-svg-icons'
+
 import PageTitle from '@/components/PageTitle.vue'
 </script>
 
 <template>
   <section>
     <div class="p-12 pt-8">
-      <PageTitle title="Aguardando confirmação" showBackArrow link="/" />
+      <PageTitle title="Aguardando confirmação" :showBackArrow="false" />
 
       <div class="container mx-auto px-4 mt-8">
         <div class="flex flex-col justify-between items-center">

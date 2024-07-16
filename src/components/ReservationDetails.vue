@@ -1,23 +1,12 @@
 <script setup lang="ts">
+import { getDays, formatDate } from '@/utils/date'
+
 import type { Hotel, UserSearch } from '@/types'
 
 const props = defineProps<{
   hotel: Hotel
   search: UserSearch
 }>()
-
-const days = (checkIn: string, checkOut: string) => {
-  if (!checkIn || !checkOut) return 0
-
-  const start = new Date(checkIn)
-  const end = new Date(checkOut)
-  const diff = Math.abs(end.getTime() - start.getTime())
-  return Math.ceil(diff / (1000 * 60 * 60 * 24))
-}
-
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString('pt-BR')
-}
 </script>
 
 <template>
@@ -37,7 +26,7 @@ const formatDate = (date: string) => {
             </h3>
             <p class="text-sm text-gray-500">
               {{ formatDate(props.search.checkIn) }} - {{ formatDate(props.search.checkOut) }} |
-              {{ days(props.search.checkIn, props.search.checkOut) }} dias
+              {{ getDays(props.search.checkIn, props.search.checkOut) }} dias
             </p>
             <p class="text-sm text-gray-500">
               {{ props.search.guests }} hóspedes e {{ props.search.rooms }} quartos
@@ -46,7 +35,9 @@ const formatDate = (date: string) => {
         </div>
       </div>
       <div class="flex items-center justify-end mt-4 font-semibold">
-        <p>Total: ${{ props.hotel.price * days(props.search.checkIn, props.search.checkOut) }}</p>
+        <p>
+          Total: ${{ props.hotel.price * getDays(props.search.checkIn, props.search.checkOut) }}
+        </p>
       </div>
     </div>
   </div>

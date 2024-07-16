@@ -1,11 +1,13 @@
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue'
-import BaseButton from './BaseButton.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { defineEmits, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const props = defineProps({
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+
+import BaseButton from './BaseButton.vue'
+
+defineProps({
   isOpen: Boolean
 })
 
@@ -22,9 +24,9 @@ function handleClose() {
 </script>
 
 <template>
-  <div v-if="isOpen" class="modal-mask">
+  <div v-if="isOpen" class="modal-mask transition-all duration-300">
     <div class="modal-wrapper">
-      <div class="modal-container" ref="target">
+      <div class="modal-container p-8 bg-white" ref="target">
         <div class="modal-header mb-6">
           <slot name="header">
             <h4 class="text-2xl font-semibold text-center">Reserva confirmada!</h4>
@@ -61,12 +63,11 @@ function handleClose() {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal-container {
   width: 600px;
   max-width: 80%;
   margin: 150px auto;
-  padding: 20px 30px;
-  background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
 }

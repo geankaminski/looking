@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+
+import { useHotelsStore } from '@/stores/hotels'
+
 import ReservationDetails from '@/components/ReservationDetails.vue'
 import PaymentInfo from '@/components/PaymentInfo.vue'
 import PageTitle from '@/components/PageTitle.vue'
-import { useRouter } from 'vue-router'
-import { storeToRefs } from 'pinia'
-import { useHotelsStore } from '@/stores/hotels'
-import { onMounted, ref } from 'vue'
 
 const hotelsStore = useHotelsStore()
 const router = useRouter()
@@ -23,7 +25,7 @@ onMounted(() => {
 
 <template>
   <div class="p-12 pt-8">
-    <PageTitle title="Checkout" showBackArrow link="/" />
+    <PageTitle title="Checkout" showBackArrow="false" link="/" />
 
     <section>
       <div class="container flex flex-rol md:flex-col mt-8 gap-4">
