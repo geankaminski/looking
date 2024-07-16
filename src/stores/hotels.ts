@@ -60,7 +60,6 @@ export const useHotelsStore = defineStore('hotels', {
           name: 'No favorite hotels',
           price: 0,
           rating: 0,
-          location: '',
           description: '',
           image: ''
         }
@@ -80,7 +79,7 @@ export const useHotelsStore = defineStore('hotels', {
           name: 'No favorite hotels',
           price: 0,
           rating: 0,
-          location: '',
+
           description: '',
           image: ''
         }

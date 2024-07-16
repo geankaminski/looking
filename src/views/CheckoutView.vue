@@ -22,8 +22,7 @@ const hotel = ref<Hotel>({
   description: '',
   price: 0,
   rating: 0,
-  image: '',
-  location: ''
+  image: ''
 })
 
 onMounted(() => {
@@ -34,8 +33,7 @@ onMounted(() => {
     description: '',
     price: 0,
     rating: 0,
-    image: '',
-    location: ''
+    image: ''
   }
 })
 </script>

@@ -7,7 +7,6 @@ describe('ReservationDetails', () => {
     name: 'Test Hotel',
     price: 100,
     id: 1,
-    location: 'Test Location',
     description: 'Test Description',
     rating: 5,
     image: 'test.jpg'

@@ -1,18 +1,18 @@
 # Looking
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplicação de reserva de hotéis utilizando Vue 3, Pinia, Typescript e Tailwind.
 
-## Recommended IDE Setup
+# Typescript
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Optei por manter todas as interfaces em um só arquivo (index.ts) por brevidade da aplicação, embora o ideal fosse separar por entidades.
 
-## Type Support for `.vue` Imports in TS
+# Mock
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+O arquivo mock.ts possui duas funções que simulam chamadas para uma API.
 
-## Customize configuration
+# CI/CD
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Como a aplicação já conta com deploy automático na Netlify, defini apenas a execução dos testes unitários no pipeline do Github Actions.
 
 ## Project Setup
 
