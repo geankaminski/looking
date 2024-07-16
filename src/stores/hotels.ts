@@ -2,7 +2,9 @@ import { defineStore } from 'pinia'
 
 import { fetchData, submitReservation } from '@/services/mock'
 
-import type { UserSearch, Hotel } from '@/types'
+import { playNotification } from '@/utils/audio'
+
+import type { UserSearch, Hotel, Notification } from '@/types'
 
 export const useHotelsStore = defineStore('hotels', {
   state: () => ({
@@ -18,9 +20,7 @@ export const useHotelsStore = defineStore('hotels', {
       checkOut: ''
     } as UserSearch,
     loading: false,
-    hotelId: null as null | number,
-    infoModal: null as null | string,
-    notifications: [] as string[]
+    notifications: [] as Notification[]
   }),
   getters: {
     getSortedHotels(): Hotel[] {
@@ -51,20 +51,40 @@ export const useHotelsStore = defineStore('hotels', {
     getFavorites(): Hotel[] {
       return this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
     },
-    lowestPriceHotelFromFavorites(): Hotel | null {
+    lowestPriceHotelFromFavorites(): Hotel {
       const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
 
-      if (favorites.length === 0) return null
+      if (favorites.length === 0) {
+        return {
+          id: 0,
+          name: 'No favorite hotels',
+          price: 0,
+          rating: 0,
+          location: '',
+          description: '',
+          image: ''
+        }
+      }
 
       return favorites.reduce((lowest, hotel) => {
         if (hotel.price < lowest.price) return hotel
         return lowest
       })
     },
-    bestRatingHotelFromFavorites(): Hotel | null {
+    bestRatingHotelFromFavorites(): Hotel {
       const favorites = this.hotels.filter((hotel) => this.favorites.includes(hotel.id))
 
-      if (favorites.length === 0) return null
+      if (favorites.length === 0) {
+        return {
+          id: 0,
+          name: 'No favorite hotels',
+          price: 0,
+          rating: 0,
+          location: '',
+          description: '',
+          image: ''
+        }
+      }
 
       return favorites.reduce((best, hotel) => {
         if (hotel.rating > best.rating) return hotel
@@ -85,16 +105,16 @@ export const useHotelsStore = defineStore('hotels', {
       }
     },
     getHotelById(id: number): Hotel | undefined {
-      return this.hotels.find((hotel) => hotel.id === id)
+      return this.hotels.find((hotel) => hotel.id == id)
     },
+
     async reserveHotel(id: number): Promise<boolean> {
       try {
-        this.hotelId = id
-        const response: string | null = (await submitReservation(id)) as string | null
+        const response = (await submitReservation(id)) as Notification | null
 
         if (response) {
-          this.infoModal = response
           this.notifications.push(response)
+          playNotification()
         }
 
         return true

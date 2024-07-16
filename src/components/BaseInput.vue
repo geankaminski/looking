@@ -5,6 +5,9 @@ const props = defineProps<{
   type: string
   placeholder: string
   min?: number | string
+  max?: number | string
+  maxlength?: number | string
+  error?: string
 }>()
 
 defineEmits(['update:model'])
@@ -18,9 +21,12 @@ defineEmits(['update:model'])
       :type="props.type"
       :id="props.label"
       :min="props.min"
+      :max="props.max"
+      :maxlength="props.maxlength"
       class="w-full rounded-md border border-primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
       :placeholder="props.placeholder"
       @input="$emit('update:model', $event?.target?.value)"
     />
+    <p v-if="props.error" class="text-red text-xs mt-1">{{ props.error }}</p>
   </div>
 </template>

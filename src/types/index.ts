@@ -28,3 +28,9 @@ export interface UserData {
 export interface Hotels {
   hotels: Hotel[]
 }
+
+export interface Notification {
+  message: string
+  status: 'success' | 'error'
+  id: number
+}

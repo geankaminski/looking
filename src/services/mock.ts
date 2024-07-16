@@ -189,7 +189,7 @@ function fetchData() {
   })
 }
 
-function submitReservation(id: number) {
+function submitReservation(id: number): Promise<{ message: string; status: string; id: number }> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

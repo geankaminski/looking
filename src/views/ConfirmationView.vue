@@ -12,7 +12,7 @@ import PageTitle from '@/components/PageTitle.vue'
 
       <div class="container mx-auto px-4 mt-8">
         <div class="flex flex-col justify-between items-center">
-          <p class="text-2xl font-semibold text-primary md:text-3xl">
+          <p class="text-2xl font-semibold text-primary md:text-3xl text-center">
             Seu pedido foi realizado com sucesso!
           </p>
 

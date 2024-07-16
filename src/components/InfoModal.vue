@@ -1,6 +1,5 @@
 <script setup>
 import { defineEmits, ref } from 'vue'
-import { useRouter } from 'vue-router'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
@@ -11,15 +10,12 @@ defineProps({
   isOpen: Boolean
 })
 
-const router = useRouter()
-
 const emit = defineEmits(['modal-close'])
 
 const target = ref(null)
 
 function handleClose() {
   emit('modal-close')
-  router.push('/')
 }
 </script>
 

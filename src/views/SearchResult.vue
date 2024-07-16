@@ -7,9 +7,11 @@ import HotelCard from '@/components/HotelCard.vue'
 import SortSection from '@/components/SortSection.vue'
 import PageTitle from '@/components/PageTitle.vue'
 
+import type { Hotel } from '@/types'
+
 const hotelsStore = useHotelsStore()
 
-const hotels = ref([])
+const hotels = ref<Hotel[]>([])
 
 onMounted(() => {
   getData()
