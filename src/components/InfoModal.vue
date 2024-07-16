@@ -1,30 +1,49 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
+import BaseButton from './BaseButton.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   isOpen: Boolean
 })
 
+const router = useRouter()
+
 const emit = defineEmits(['modal-close'])
 
 const target = ref(null)
+
+function handleClose() {
+  emit('modal-close')
+  router.push('/')
+}
 </script>
 
 <template>
   <div v-if="isOpen" class="modal-mask">
     <div class="modal-wrapper">
       <div class="modal-container" ref="target">
-        <div class="modal-header">
-          <slot name="header"> default header </slot>
+        <div class="modal-header mb-6">
+          <slot name="header">
+            <h4 class="text-2xl font-semibold text-center">Reserva confirmada!</h4>
+
+            <div class="flex items-center justify-center mt-6">
+              <FontAwesomeIcon :icon="faCircleCheck" class="text-7xl text-green" />
+            </div>
+          </slot>
         </div>
-        <div class="modal-body">
-          <slot name="content"> default content </slot>
+
+        <div class="modal-body mb-4">
+          <slot name="content">
+            <p class="text-center">Você receberá um email com os detalhes da sua reserva.</p>
+          </slot>
         </div>
+
         <div class="modal-footer">
           <slot name="footer">
-            <div>
-              <button @click.stop="emit('modal-close')">Submit</button>
-            </div>
+            <BaseButton @click="handleClose" label="Fechar" />
           </slot>
         </div>
       </div>
@@ -43,7 +62,8 @@ const target = ref(null)
   background-color: rgba(0, 0, 0, 0.5);
 }
 .modal-container {
-  width: 300px;
+  width: 600px;
+  max-width: 80%;
   margin: 150px auto;
   padding: 20px 30px;
   background-color: #fff;

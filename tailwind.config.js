@@ -8,6 +8,7 @@ export default {
       hint: '#A3A3A3',
       link: '#7986FE',
       black: '#000000',
+      green: '#00C689',
       white: '#ffffff',
       yellow: '#FFF500',
       red: '#FF6969'
@@ -25,8 +26,10 @@ export default {
       black: '#000000',
       white: '#ffffff',
       gray: '#747474 ',
-      table: '#B3B3B3',
-      bars: '#D9D9D9'
+      green: '#00C689',
+      red: '#FF6969',
+      yellow: '#FFF500',
+      hint: '#A3A3A3'
     }
   },
   plugins: []

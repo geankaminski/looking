@@ -83,6 +83,9 @@ export const useHotelsStore = defineStore('hotels', {
         return false
       }
     },
+    getHotelById(id) {
+      return this.hotels.find((hotel) => hotel.id === id)
+    },
     async reserveHotel(id) {
       try {
         this.hotelId = id

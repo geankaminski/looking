@@ -1,14 +1,35 @@
 <script setup lang="ts">
 import ReservationDetails from '@/components/ReservationDetails.vue'
+import PaymentInfo from '@/components/PaymentInfo.vue'
+import PageTitle from '@/components/PageTitle.vue'
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useHotelsStore } from '@/stores/hotels'
+import { onMounted, ref } from 'vue'
+
+const hotelsStore = useHotelsStore()
+const router = useRouter()
+
+const { search } = storeToRefs(hotelsStore)
+
+const hotel = ref(null)
+
+onMounted(() => {
+  const id = router.currentRoute.value.params.id
+  hotel.value = hotelsStore.getHotelById(id)
+  console.log(hotel.value)
+})
 </script>
 
 <template>
-  <section>
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <h1 class="text-2xl font-semibold text-primary">Checkout</h1>
+  <div class="p-12 pt-8">
+    <PageTitle title="Checkout" showBackArrow link="/" />
+
+    <section>
+      <div class="container flex flex-rol md:flex-col mt-8 gap-4">
+        <ReservationDetails :hotel="hotel" :search="search" />
+        <PaymentInfo />
       </div>
-      <ReservationDetails />
-    </div>
-  </section>
+    </section>
+  </div>
 </template>

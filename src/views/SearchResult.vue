@@ -2,6 +2,7 @@
 import { useHotelsStore } from '@/stores/hotels'
 import HotelCard from '@/components/HotelCard.vue'
 import SortSection from '@/components/SortSection.vue'
+import PageTitle from '@/components/PageTitle.vue'
 import { onMounted, ref } from 'vue'
 
 const hotelsStore = useHotelsStore()
@@ -18,8 +19,8 @@ const getData = () => {
 </script>
 
 <template>
-  <div class="p-12">
-    <h4 class="text-2xl font-bold text-center mb-4">{{ hotels.length }} hoteis encontrados</h4>
+  <div class="p-12 pt-8">
+    <PageTitle title="Resultados da busca" showBackArrow link="/" />
 
     <SortSection @sort="getData" />
 

@@ -3,8 +3,9 @@ import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import BaseButton from '@/components/BaseButton.vue'
+import { faHeart as faHeartSolid, faAward, faStar } from '@fortawesome/free-solid-svg-icons'
+import type { Hotel } from '@/types'
 
 import { useHotelsStore } from '@/stores/hotels'
 
@@ -14,22 +15,25 @@ const { favorites } = storeToRefs(hotelsStore)
 
 const router = useRouter()
 
-interface Hotel {
-  id: number
-  name: string
-  price: number
-  rating: number
-}
-
 const props = defineProps<{
   hotel: Hotel
+  featured?: boolean
 }>()
 </script>
 
 <template>
   <div
-    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    class="w-full max-w-sm bg-white border rounded-lg shadow relative"
+    :class="featured ? 'outline outline-green border-0' : ''"
   >
+    <div
+      v-if="featured"
+      class="absolute top-0 left-0 bg-green-500 text-white px-2 py-1 rounded-tr-lg rounded-bl-lg z-10"
+    >
+      <div class="flex items-center justify-center bg-gray p-2 rounded-full w-12 h-12">
+        <FontAwesomeIcon :icon="faAward" class="text-xl" />
+      </div>
+    </div>
     <a href="#">
       <img class="rounded-t-lg" src="https://picsum.photos/500/300" alt="product image" />
     </a>
@@ -41,32 +45,34 @@ const props = defineProps<{
 
         <button class="text-primary dark:text-primary mt-3" @click="toggleFavorite(props.hotel.id)">
           <FontAwesomeIcon
-            aria-label="Notificações"
             :icon="favorites.includes(props.hotel.id) ? faHeartSolid : faHeart"
+            :class="favorites.includes(props.hotel.id) ? 'text-red' : 'text-primary'"
             class="text-primary text-xl cursor-pointer hover:opacity-70 transition-all"
           />
         </button>
       </div>
 
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
-        {{ props.hotel.description }}
+        {{
+          props.hotel.description.length > 80
+            ? props.hotel.description.slice(0, 80) + '...'
+            : props.hotel.description
+        }}
       </p>
 
       <div class="flex items-center justify-between mt-2.5 mb-2">
         <div class="flex items-center">
-          <FontAwesomeIcon :icon="faStar" class="text-primary text-xl" />
+          <FontAwesomeIcon :icon="faStar" class="text-primary text-xl text-yellow" />
           <span class="text-gray-500 dark:text-gray-400 ml-1">{{ props.hotel.rating }}</span>
         </div>
 
         <div class="text-3xl font-bold text-primary">${{ props.hotel.price }}</div>
       </div>
 
-      <button
+      <BaseButton
         @click="router.push({ name: 'checkout', params: { id: props.hotel.id } })"
-        class="w-full text-white bg-primary font-medium rounded-lg text-sm px-54 py-2.5 text-center mt-2"
-      >
-        Add to cart
-      </button>
+        label="Add to cart"
+      />
     </div>
   </div>
 </template>
