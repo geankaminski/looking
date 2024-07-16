@@ -9,7 +9,7 @@ export default {
   }
 }
 
-const Template = (args) => ({
+const Template = (args: any) => ({
   components: { BaseButton },
   setup() {
     return { args }
@@ -17,15 +17,13 @@ const Template = (args) => ({
   template: '<BaseButton v-bind="args" />'
 })
 
-// Exporta a história padrão com o Template criado
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Button'
+  label: 'Primary Button'
 }
 
-// Exporta uma variante com cor diferente
 export const Colored = Template.bind({})
 Colored.args = {
-  label: 'Colored Button',
-  color: 'secondary' // Cor opcional para o botão
+  label: 'Secondary Button',
+  color: 'secondary'
 }

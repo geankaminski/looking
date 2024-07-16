@@ -185,7 +185,7 @@ function fetchData() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ hotels })
-    }, 100)
+    }, 1500)
   })
 }
 

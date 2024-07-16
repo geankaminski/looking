@@ -1,38 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '../views/HomeView.vue'
-import SearchResult from '@/views/SearchResult.vue'
-import FavoritesView from '@/views/FavoritesView.vue'
-import CheckoutView from '@/views/CheckoutView.vue'
-import ConfirmationView from '@/views/ConfirmationView.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('@/views/HomeView.vue')
     },
     {
       path: '/hotels',
       name: 'hotels',
-      component: SearchResult
+      component: () => import('@/views/SearchResult.vue')
     },
     {
       path: '/favorites',
       name: 'favorites',
-      component: FavoritesView
+      component: () => import('@/views/FavoritesView.vue')
     },
     {
       path: '/checkout/:id',
       name: 'checkout',
-      component: CheckoutView
+      component: () => import('@/views/CheckoutView.vue')
     },
     {
       path: '/confirmation',
       name: 'confirmation',
-      component: ConfirmationView
+      component: () => import('@/views/ConfirmationView.vue')
     }
   ]
 })

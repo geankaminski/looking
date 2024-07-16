@@ -41,7 +41,7 @@ function handleClose() {
 
         <div class="modal-footer">
           <slot name="footer">
-            <BaseButton @click="handleClose" label="Fechar" />
+            <BaseButton @click="handleClose" label="Fechar" class="close-button" />
           </slot>
         </div>
       </div>

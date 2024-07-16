@@ -17,8 +17,8 @@ const favorites = ref(hotelsStore.getFavorites)
   <div class="p-12 pt-8 md:p-4">
     <PageTitle title="Favoritos" showBackArrow link="/" />
 
-    <div v-if="!favorites.length" class="text-center text-gray-500">
-      <p>Você ainda não tem favoritos.</p>
+    <div v-if="!favorites.length" class="text-center mt-8">
+      <p class="font-semibold mb-2">Você ainda não tem favoritos.</p>
     </div>
 
     <div v-else>

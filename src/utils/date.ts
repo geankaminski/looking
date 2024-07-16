@@ -10,7 +10,8 @@ function getDays(checkIn: string, checkOut: string) {
 function formatDate(date: string) {
   if (!date) return ''
 
-  return new Date(date).toLocaleDateString('pt-BR')
+  const dateObject = new Date(`${date}T00:00:00`)
+  return dateObject.toLocaleDateString('pt-BR')
 }
 
 export { getDays, formatDate }

@@ -37,7 +37,6 @@ onMounted(() => {
     image: '',
     location: ''
   }
-  console.log(hotel.value)
 })
 </script>
 

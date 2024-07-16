@@ -18,7 +18,7 @@ const emit = defineEmits(['increment', 'decrement'])
     <div class="flex items-center justify-between">
       <button
         class="text-primary"
-        @click="props.number > 0 && emit('decrement')"
+        @click="props.number > 1 && emit('decrement')"
         type="button"
         :aria-label="`Decrement ${props.label}`"
       >

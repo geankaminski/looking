@@ -26,7 +26,17 @@ const userSearch = ref<UserSearch>({
   rooms: 1
 })
 
+const errors = ref({
+  location: '',
+  checkIn: '',
+  checkOut: ''
+})
+
 const handleSearch = async () => {
+  const isValid = validateSearch()
+
+  if (!isValid) return
+
   setSearch(userSearch.value)
 
   const status = await fetchHotels()
@@ -34,6 +44,16 @@ const handleSearch = async () => {
   if (status) {
     router.push({ name: 'hotels' })
   }
+}
+
+const validateSearch = () => {
+  errors.value = {
+    location: userSearch.value.location ? '' : 'Campo obrigatório',
+    checkIn: userSearch.value.checkIn ? '' : 'Campo obrigatório',
+    checkOut: userSearch.value.checkOut ? '' : 'Campo obrigatório'
+  }
+
+  return !Object.values(errors.value).some((error) => error)
 }
 </script>
 
@@ -48,6 +68,7 @@ const handleSearch = async () => {
           v-model="userSearch.location"
           type="text"
           placeholder="São Paulo"
+          :error="errors.location"
           @update:model="userSearch.location = $event"
         />
 
@@ -73,6 +94,7 @@ const handleSearch = async () => {
               label="Data de entrada"
               v-model="userSearch.checkIn"
               type="date"
+              :error="errors.checkIn"
               :min="new Date().toISOString().split('T')[0]"
               placeholder="2022-12-31"
               @update:model="userSearch.checkIn = $event"
@@ -85,18 +107,14 @@ const handleSearch = async () => {
               :min="userSearch.checkIn"
               type="date"
               placeholder="2023-01-01"
+              :error="errors.checkOut"
               @update:model="userSearch.checkOut = $event"
             />
           </div>
         </div>
 
         <div>
-          <BaseButton
-            type="submit"
-            :disabled="loading"
-            label="Buscar hoteis"
-            class="w-full hover:shadow-form rounded-md bg-primary mt-4 py-2 px-8 text-center text-base font-semibold text-white outline-none"
-          />
+          <BaseButton type="submit" :loading="loading" :disabled="loading" label="Buscar hoteis" />
         </div>
       </form>
     </div>
