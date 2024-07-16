@@ -29,7 +29,7 @@ const props = defineProps<{
 <template>
   <div
     class="w-full max-w-sm bg-white border rounded-lg shadow relative"
-    :class="featured ? 'outline outline-green border-0' : ''"
+    :class="featured ? 'outline outline-green outline-4 border-0' : ''"
   >
     <div
       v-if="featured"

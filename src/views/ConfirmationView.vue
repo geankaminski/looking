@@ -7,7 +7,7 @@ import PageTitle from '@/components/PageTitle.vue'
 
 <template>
   <section>
-    <div class="p-12 pt-8">
+    <div class="p-12 pt-8 md:p-4">
       <PageTitle title="Aguardando confirmação" :showBackArrow="false" />
 
       <div class="container mx-auto px-4 mt-8">

@@ -16,13 +16,23 @@ const emit = defineEmits(['increment', 'decrement'])
     <label class="mb-1 block font-small text-primary">{{ props.label }}</label>
 
     <div class="flex items-center justify-between">
-      <button class="text-primary" @click="props.number > 0 && emit('decrement')" type="button">
+      <button
+        class="text-primary"
+        @click="props.number > 0 && emit('decrement')"
+        type="button"
+        :aria-label="`Decrement ${props.label}`"
+      >
         <FontAwesomeIcon :icon="faMinus" class="text-xl cursor-pointer" />
       </button>
 
       <p class="text-lg font-semibold text-primary">{{ props.number }}</p>
 
-      <button class="text-primary" @click="emit('increment')" type="button">
+      <button
+        class="text-primary"
+        @click="emit('increment')"
+        type="button"
+        :aria-label="`Increment ${props.label}`"
+      >
         <FontAwesomeIcon :icon="faPlus" class="text-xl cursor-pointer" />
       </button>
     </div>

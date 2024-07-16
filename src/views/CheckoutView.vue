@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-12 pt-8">
+  <div class="p-12 pt-8 md:p-4">
     <PageTitle title="Checkout" showBackArrow="false" link="/" />
 
     <section>

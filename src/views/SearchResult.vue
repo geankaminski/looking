@@ -21,7 +21,7 @@ const getData = () => {
 </script>
 
 <template>
-  <div class="p-12 pt-8">
+  <div class="p-12 pt-8 md:p-4">
     <PageTitle title="Resultados da busca" showBackArrow link="/" />
 
     <SortSection @sort="getData" />

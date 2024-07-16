@@ -38,10 +38,10 @@ const handleSearch = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center p-12">
+  <div class="flex items-center justify-center p-12 md:p-4">
     <div class="mx-auto w-full max-w-[550px] bg-white border border-primary rounded-md shadow-form">
       <form @submit.prevent="handleSearch" class="p-8 bg-white rounded-md shadow-form">
-        <h4 class="text-2xl font-semibold text-center mb-3">Encontre hotéis</h4>
+        <h2 class="text-2xl font-semibold text-center mb-3">Encontre hotéis</h2>
 
         <BaseInput
           label="Destino"

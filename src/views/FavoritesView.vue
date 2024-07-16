@@ -14,7 +14,7 @@ const favorites = ref(hotelsStore.getFavorites)
 </script>
 
 <template>
-  <div class="p-12 pt-8">
+  <div class="p-12 pt-8 md:p-4">
     <PageTitle title="Favoritos" showBackArrow link="/" />
 
     <div v-if="!favorites.length" class="text-center text-gray-500">
