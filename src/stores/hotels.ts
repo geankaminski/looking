@@ -19,7 +19,8 @@ export const useHotelsStore = defineStore('hotels', {
     } as UserSearch,
     loading: false,
     hotelId: null as null | number,
-    infoModal: null as null | string
+    infoModal: null as null | string,
+    notifications: [] as string[]
   }),
   getters: {
     getSortedHotels(): Hotel[] {
@@ -90,7 +91,12 @@ export const useHotelsStore = defineStore('hotels', {
       try {
         this.hotelId = id
         const response: string | null = (await submitReservation(id)) as string | null
-        this.infoModal = response
+
+        if (response) {
+          this.infoModal = response
+          this.notifications.push(response)
+        }
+
         return true
       } catch {
         return false

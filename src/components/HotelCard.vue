@@ -104,6 +104,6 @@ const props = defineProps<{
 }
 
 .animate-pulse {
-  animation: pulse 1.5s infinite;
+  animation: pulse 1s infinite;
 }
 </style>

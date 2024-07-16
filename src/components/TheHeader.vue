@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart, faBell } from '@fortawesome/free-regular-svg-icons'
 
 import { useHotelsStore } from '@/stores/hotels'
 
@@ -11,7 +11,7 @@ const hotelsStore = useHotelsStore()
 
 const router = useRouter()
 
-const { favorites } = storeToRefs(hotelsStore)
+const { favorites, notifications } = storeToRefs(hotelsStore)
 </script>
 
 <template>
@@ -20,7 +20,25 @@ const { favorites } = storeToRefs(hotelsStore)
       <router-link to="/" class="text-white text-2xl font-bold"> Looking </router-link>
     </h1>
 
-    <div>
+    <div class="flex gap-4">
+      <button
+        class="py-2 px-1 relative border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+        aria-label="Cart"
+      >
+        <FontAwesomeIcon
+          aria-label="Notificações"
+          :icon="faBell"
+          class="text-white text-2xl cursor-pointer hover:opacity-70 transition-all"
+        />
+        <span class="absolute inset-0 object-right-top -mr-5 mt-4" v-if="notifications.length">
+          <div
+            class="inline-flex items-center px-1 bg-red rounded-full pb-0.5 text-xs leading-4 text-white font-semibold"
+          >
+            {{ notifications.length }}
+          </div>
+        </span>
+      </button>
+
       <button
         @click="router.push({ name: 'favorites' })"
         class="py-2 px-1 relative border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
