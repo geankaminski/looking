@@ -1,5 +1,6 @@
 /* 
- Aqui temos funções de serviço mockadas que simulam a obtenção de dados de um servidor remoto.
+  Aqui temos funções de serviço mockadas que simulam a obtenção de dados de um servidor remoto.
+  No caso de chamadas para uma API real utilizaria um .env para armazenar a URL base da API.
 */
 
 const hotels = [

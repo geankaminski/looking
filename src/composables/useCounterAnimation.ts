@@ -1,3 +1,8 @@
+/*
+  Este composable anima un contador de números. 
+  O efeito não fica ideal em uma tela de pagamento mas ilustra bem a utilização de composables do Vue 3.
+*/
+
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 

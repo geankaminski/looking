@@ -2,10 +2,10 @@
   Concentrei todas as ações relacionadas a hotéis neste store. Para projetos maiores separaria em módulos.
 
   GETTERS
-  getSortedHotels: Retorna os hotéis ordenados por preço e/ou rating.
+  getSortedHotels: Retorna os hotéis ordenados por preço e/ou avaliação.
   getFavorites: Retorna os hotéis favoritos.
   lowestPriceHotelFromFavorites: Retorna o hotel favorito com menor preço.
-  bestRatingHotelFromFavorites: Retorna o hotel favorito com maior rating.
+  bestRatingHotelFromFavorites: Retorna o hotel favorito com maior avaliação.
 
   ACTIONS
   fetchHotels: Busca os hotéis da API mockada.

@@ -34,9 +34,9 @@ describe('BookingDetails', () => {
     expect(hotelName.text()).toContain('Test Hotel - Test Location')
 
     const dateInfo = wrapper.find('.date-info')
-    expect(dateInfo.text()).toContain('01/07/2024 - 05/07/2024 | 4 dias')
+    expect(dateInfo.text()).toContain('01/07/2024 - 05/07/2024 | 4 days')
 
     const guestsInfo = wrapper.find('.guests-info')
-    expect(guestsInfo.text()).toContain('2 hóspedes e 1 quartos')
+    expect(guestsInfo.text()).toContain('2 guests and 1 room')
   })
 })

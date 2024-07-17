@@ -1,11 +1,12 @@
-// BaseButton.stories.ts
 import BaseButton from '@/components/BaseButton.vue'
 
 export default {
-  title: 'Example/BaseButton',
+  title: 'BaseButton',
   component: BaseButton,
   argTypes: {
-    color: { control: 'color' }
+    label: { control: 'text' },
+    color: { control: 'color' },
+    loading: { control: 'boolean' }
   }
 }
 
@@ -17,13 +18,19 @@ const Template = (args: any) => ({
   template: '<BaseButton v-bind="args" />'
 })
 
-export const Default = Template.bind({})
-Default.args = {
+export const Primary = Template.bind({})
+Primary.args = {
   label: 'Primary Button'
 }
 
-export const Colored = Template.bind({})
-Colored.args = {
+export const Secondary = Template.bind({})
+Secondary.args = {
   label: 'Secondary Button',
   color: 'secondary'
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  label: 'Loading Button',
+  loading: true
 }
