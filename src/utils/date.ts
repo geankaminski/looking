@@ -1,6 +1,8 @@
 function getDays(checkIn: string, checkOut: string) {
   if (!checkIn || !checkOut) return 0
 
+  if (checkIn === checkOut) return 1
+
   const start = new Date(checkIn)
   const end = new Date(checkOut)
   const diff = Math.abs(end.getTime() - start.getTime())
