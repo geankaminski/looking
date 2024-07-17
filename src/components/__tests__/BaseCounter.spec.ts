@@ -21,13 +21,13 @@ describe('BaseCounter', () => {
   })
 
   it('increment event emitted when increment button is clicked', async () => {
-    const wrapper = mount(BaseCounter, { props: { label: 'Increment Test', number: 0 } })
+    const wrapper = mount(BaseCounter, { props: { label: 'Increment Test', number: 1 } })
     await wrapper.find('[aria-label="Increment Increment Test"]').trigger('click')
     expect(wrapper.emitted('increment')).toBeTruthy()
   })
 
   it('decrement event emitted when decrement button is clicked', async () => {
-    const wrapper = mount(BaseCounter, { props: { label: 'Decrement Test', number: 1 } })
+    const wrapper = mount(BaseCounter, { props: { label: 'Decrement Test', number: 2 } })
     await wrapper.find('[aria-label="Decrement Decrement Test"]').trigger('click')
     expect(wrapper.emitted('decrement')).toBeTruthy()
   })

@@ -56,7 +56,7 @@ const handleNotificationClick = (id: number) => {
 
     <div class="flex gap-4">
       <button
-        class="notifications-button py-2 px-1 relative border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+        class="notifications-button py-2 px-1 relative border-transparent text-gray rounded-full hover:text-gray focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
         aria-label="Notifications"
         @click="openNotifications = !openNotifications"
       >
@@ -99,7 +99,7 @@ const handleNotificationClick = (id: number) => {
 
       <button
         @click="router.push({ name: 'favorites' })"
-        class="py-2 px-1 relative border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+        class="py-2 px-1 relative border-transparent text-gray rounded-full hover:text-gray focus:outline-none focus:text-gray transition duration-150 ease-in-out"
         aria-label="Favorites"
       >
         <FontAwesomeIcon

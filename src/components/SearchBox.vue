@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
@@ -15,7 +15,7 @@ const hotelsStore = useHotelsStore()
 
 const router = useRouter()
 
-const { loading } = storeToRefs(hotelsStore)
+const { loading, search } = storeToRefs(hotelsStore)
 const { fetchHotels, setSearch } = hotelsStore
 
 const userSearch = ref<UserSearch>({
@@ -32,10 +32,12 @@ const errors = ref({
   checkOut: ''
 })
 
-const handleSearch = async () => {
-  const isValid = validateSearch()
+onMounted(() => {
+  userSearch.value = search.value
+})
 
-  if (!isValid) return
+const handleSearch = async () => {
+  if (!validateSearch()) return
 
   setSearch(userSearch.value)
 

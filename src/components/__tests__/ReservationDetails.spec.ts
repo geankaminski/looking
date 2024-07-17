@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ReservationDetails from '../ReservationDetails.vue'
+import BookingDetails from '../BookingDetails.vue'
 
-describe('ReservationDetails', () => {
+describe('BookingDetails', () => {
   const mockHotel = {
     name: 'Test Hotel',
     price: 100,
@@ -21,7 +21,7 @@ describe('ReservationDetails', () => {
   }
 
   it('renders order details correctly', () => {
-    const wrapper = mount(ReservationDetails, {
+    const wrapper = mount(BookingDetails, {
       props: {
         hotel: mockHotel,
         search: mockSearch

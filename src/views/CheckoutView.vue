@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 
 import { useHotelsStore } from '@/stores/hotels'
 
-import ReservationDetails from '@/components/ReservationDetails.vue'
+import BookingDetails from '@/components/BookingDetails.vue'
 import PaymentInfo from '@/components/PaymentInfo.vue'
 import PageTitle from '@/components/PageTitle.vue'
 
@@ -40,11 +40,11 @@ onMounted(() => {
 
 <template>
   <div class="p-12 pt-8 md:p-4">
-    <PageTitle title="Checkout" :showBackArrow="false" link="/" />
+    <PageTitle title="Checkout" showBackArrow />
 
     <section>
       <div class="container flex flex-rol md:flex-col mt-8 gap-4">
-        <ReservationDetails :hotel="hotel" :search="search" />
+        <BookingDetails :hotel="hotel" :search="search" />
         <PaymentInfo />
       </div>
     </section>

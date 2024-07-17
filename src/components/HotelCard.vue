@@ -10,6 +10,8 @@ import { faHeart as faHeartSolid, faAward, faStar } from '@fortawesome/free-soli
 import BaseButton from '@/components/BaseButton.vue'
 import { useHotelsStore } from '@/stores/hotels'
 
+import { formatMoney } from '@/utils/money'
+
 import type { Hotel } from '@/types'
 
 const hotelsStore = useHotelsStore()
@@ -56,7 +58,7 @@ const props = defineProps<{
           {{ props.hotel.name }}
         </h5>
 
-        <button class="text-primary dark:text-primary mt-3" @click="toggleFavorite(props.hotel.id)">
+        <button class="text-primary mt-3" @click="toggleFavorite(props.hotel.id)">
           <FontAwesomeIcon
             :icon="favorites.includes(props.hotel.id) ? faHeartSolid : faHeart"
             :class="favorites.includes(props.hotel.id) ? 'text-red' : 'text-primary'"
@@ -65,7 +67,7 @@ const props = defineProps<{
         </button>
       </div>
 
-      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+      <p class="text-sm text-gray mt-2">
         {{
           props.hotel.description.length > 80
             ? props.hotel.description.slice(0, 80) + '...'
@@ -76,10 +78,12 @@ const props = defineProps<{
       <div class="flex items-center justify-between mt-2.5 mb-2">
         <div class="flex items-center">
           <FontAwesomeIcon :icon="faStar" class="text-primary text-xl text-yellow" />
-          <span class="text-gray-500 dark:text-gray-400 ml-1">{{ props.hotel.rating }}</span>
+          <span class="font-semibold ml-1">{{ props.hotel.rating }}</span>
         </div>
 
-        <div class="text-3xl font-bold text-primary">${{ props.hotel.price }}</div>
+        <div class="text-3xl font-bold text-primary">
+          {{ formatMoney(props.hotel.price) }} <span class="text-xs text-hint">diária</span>
+        </div>
       </div>
 
       <BaseButton

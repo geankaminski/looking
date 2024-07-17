@@ -6,7 +6,7 @@ interface CounterAnimation {
   animate: (finalValue: number) => void
 }
 
-export const useCounterAnimation = (duration: number = 2000): CounterAnimation => {
+export const useCounterAnimation = (duration: number = 1200): CounterAnimation => {
   const count: Ref<number> = ref(0)
 
   const animate = (finalValue: number): void => {

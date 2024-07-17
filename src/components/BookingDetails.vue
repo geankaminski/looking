@@ -4,6 +4,8 @@ import { getDays, formatDate } from '@/utils/date'
 
 import { useCounterAnimation } from '@/composables/useCounterAnimation'
 
+import { formatMoney } from '@/utils/money'
+
 import type { Hotel, UserSearch } from '@/types'
 
 const props = defineProps<{
@@ -39,6 +41,10 @@ watch(() => props.hotel.price, updateCounter)
               {{ formatDate(props.search.checkIn) }} - {{ formatDate(props.search.checkOut) }} |
               {{ getDays(props.search.checkIn, props.search.checkOut) }} dias
             </p>
+            <p class="text-sm date-info">
+              {{ formatMoney(props.hotel.price) }}
+              por noite
+            </p>
             <p class="text-sm guests-info">
               {{ props.search.guests }} hóspedes e {{ props.search.rooms }} quartos
             </p>
@@ -47,7 +53,8 @@ watch(() => props.hotel.price, updateCounter)
       </div>
       <div class="flex items-center justify-end mt-4 font-semibold">
         <p class="total-price">
-          Total: ${{ count * getDays(props.search.checkIn, props.search.checkOut) }}
+          Total: {{ formatMoney(count * getDays(props.search.checkIn, props.search.checkOut)) }} -
+          taxas incluídas
         </p>
       </div>
     </div>

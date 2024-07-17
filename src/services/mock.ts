@@ -2,7 +2,7 @@ const hotels = [
   {
     id: '1',
     name: 'Grand Riviera Suites',
-    price: 189,
+    price: 189.8,
     rating: 4,
     description:
       'Located on the bustling Riviera Avenue, Grand Riviera Suites offers luxurious accommodations with stunning views of the city skyline.',
@@ -38,7 +38,7 @@ const hotels = [
   {
     id: '5',
     name: 'Golden Sands Retreat',
-    price: 800,
+    price: 800.9,
     rating: 5,
     description:
       'Enjoy unparalleled luxury and golden sunsets at Golden Sands Retreat, located right on the edge of a pristine beach.',
@@ -56,7 +56,7 @@ const hotels = [
   {
     id: '7',
     name: 'Mountain Vista Lodge',
-    price: 980,
+    price: 980.9,
     rating: 5,
     description:
       'Mountain Vista Lodge provides a luxurious mountain retreat with panoramic views, perfect for both relaxation and adventure.',
@@ -65,7 +65,7 @@ const hotels = [
   {
     id: '8',
     name: 'Seaside Serenity Inn',
-    price: 119,
+    price: 119.3,
     rating: 3,
     description:
       'Located just steps from the shore, Seaside Serenity Inn offers cozy accommodations with a laid-back seaside atmosphere.',
@@ -83,7 +83,7 @@ const hotels = [
   {
     id: '10',
     name: 'Harbor Lights Resort',
-    price: 212,
+    price: 212.9,
     rating: 3,
     description:
       'Harbor Lights Resort offers stunning harbor views and luxurious accommodations, perfect for a relaxing waterfront getaway.',
@@ -119,7 +119,7 @@ const hotels = [
   {
     id: '14',
     name: 'Whispering Pines Inn',
-    price: 333,
+    price: 333.8,
     rating: 4,
     description:
       'Nestled among whispering pines, this inn offers a cozy retreat with rustic charm and serene woodland surroundings.',
@@ -128,7 +128,7 @@ const hotels = [
   {
     id: '15',
     name: 'Sunset Horizon Hotel',
-    price: 390,
+    price: 390.8,
     rating: 3,
     description:
       'Enjoy spectacular sunsets at Sunset Horizon Hotel, located on a hilltop with panoramic views of the horizon and tranquil surroundings.',
@@ -155,7 +155,7 @@ const hotels = [
   {
     id: '18',
     name: 'Golden Gate Inn',
-    price: 208,
+    price: 208.9,
     rating: 3,
     description:
       'Golden Gate Inn provides comfortable accommodations with easy access to city attractions and the iconic Golden Gate Bridge.',
@@ -173,7 +173,7 @@ const hotels = [
   {
     id: '20',
     name: 'Royal Crest Suites',
-    price: 376,
+    price: 376.9,
     rating: 4,
     description:
       'Royal Crest Suites offers regal accommodations with majestic views and luxurious amenities fit for royalty.',

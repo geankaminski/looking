@@ -5,15 +5,14 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 const props = defineProps<{
   title: string
   showBackArrow?: boolean
-  link?: string
 }>()
 </script>
 
 <template>
   <div>
     <div class="flex items-center">
-      <router-link v-if="props.showBackArrow" :to="props.link || '/'">
-        <button class="text-primary mt-2 mr-2">
+      <router-link v-if="props.showBackArrow">
+        <button class="text-primary mt-1 mr-2" @click="$router.go(-1)">
           <FontAwesomeIcon
             :icon="faArrowLeft"
             class="text-primary text-xl cursor-pointer hover:opacity-70 transition-all"

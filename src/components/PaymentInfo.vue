@@ -7,6 +7,8 @@ import { useHotelsStore } from '@/stores/hotels'
 import BaseInput from './BaseInput.vue'
 import BaseButton from './BaseButton.vue'
 
+import { validateEmail } from '@/utils/validation'
+
 import type { UserData } from '@/types'
 
 const hotelsStore = useHotelsStore()
@@ -16,6 +18,8 @@ const router = useRouter()
 const { reserveHotel } = hotelsStore
 
 const handleSubmit = async () => {
+  if (!validatePayment()) return
+
   reserveHotel(+router.currentRoute.value.params.id)
   router.push({ name: 'confirmation' })
 }
@@ -28,6 +32,28 @@ const userData = ref<UserData>({
   expiration: '',
   cvv: ''
 })
+
+const errors = ref({
+  name: '',
+  email: '',
+  cardNumber: '',
+  cardName: '',
+  expiration: '',
+  cvv: ''
+})
+
+const validatePayment = () => {
+  errors.value = {
+    name: userData.value.name && userData.value.name.length > 3 ? '' : 'Nome inválido',
+    email: validateEmail(userData.value.email) ? '' : 'E-mail inválido',
+    cardNumber: userData.value.cardNumber ? '' : 'Campo obrigatório',
+    cardName: userData.value.cardName ? '' : 'Campo obrigatório',
+    expiration: userData.value.expiration ? '' : 'Campo obrigatório',
+    cvv: userData.value.cvv ? '' : 'Campo obrigatório'
+  }
+
+  return !Object.values(errors.value).some((error) => error)
+}
 </script>
 
 <template>
@@ -40,6 +66,7 @@ const userData = ref<UserData>({
           label="Nome"
           modelValue=""
           type="text"
+          :error="errors.name"
           placeholder="Nome"
           v-model="userData.name"
           @update:model="userData.name = $event"
@@ -49,6 +76,7 @@ const userData = ref<UserData>({
           label="E-mail"
           modelValue=""
           type="text"
+          :error="errors.email"
           placeholder="E-mail"
           v-model="userData.email"
           @update:model="userData.email = $event"
@@ -58,6 +86,7 @@ const userData = ref<UserData>({
           label="Número do cartão"
           modelValue=""
           type="text"
+          :error="errors.cardNumber"
           maxlength="16"
           placeholder="0000 0000 0000 0000"
           v-model="userData.cardNumber"
@@ -68,6 +97,7 @@ const userData = ref<UserData>({
           label="Nome no cartão"
           modelValue=""
           type="text"
+          :error="errors.cardName"
           placeholder="Nome no cartão"
           v-model="userData.cardName"
           @update:model="userData.cardName = $event"
@@ -79,6 +109,7 @@ const userData = ref<UserData>({
               label="Data de expiração"
               modelValue=""
               type="text"
+              :error="errors.expiration"
               placeholder="MM/AA"
               maxlength="5"
               v-model="userData.expiration"
@@ -91,6 +122,7 @@ const userData = ref<UserData>({
               label="CVV"
               modelValue=""
               type="text"
+              :error="errors.cvv"
               placeholder="CVV"
               maxlength="3"
               v-model="userData.cvv"

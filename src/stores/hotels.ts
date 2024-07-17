@@ -14,7 +14,7 @@ export const useHotelsStore = defineStore('hotels', {
     favorites: [] as number[],
     search: {
       location: '',
-      guests: 1,
+      guests: 2,
       rooms: 1,
       checkIn: '',
       checkOut: ''
