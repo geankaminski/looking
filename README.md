@@ -1,6 +1,7 @@
 # Looking
 
 Aplicação de reserva de hotéis utilizando Vue 3, Pinia, Typescript e Tailwind. Os testes unitários utilizam vitest. Storybook foi utilizado para documentar os componentes mais essenciais como Button e Input.
+Para os ícones optei por utilizar Font Awesome.
 
 Optei pelo uso do Tailwind para agilizar a construção das páginas e componentes.
 
@@ -31,6 +32,8 @@ A aplicação conta com deploy automático na Netlify. Defini a execução dos t
 - Adicionar validações e máscara nos dados do cartão
 
 ## Instruções
+
+Foi utilizada a versão 20 do Node.
 
 ```sh
 npm install
