@@ -12,6 +12,8 @@ Os hóteis exibidos podem ser reservados ou adicionados aos favoritos.
 Na tela de favoritos o usuário pode comparar as opções previamente selecionadas.
 A tela de pagamento exibe os detalhes da reserva e o formulário de pagamento.
 
+![Resultados do Lighthouse](https://exemplo.com/logo.png)
+
 # CI/CD
 
 A aplicação conta com deploy automático na Netlify. Defini a execução dos testes unitários no pipeline do Github Actions, sendo notificado se algo der errado após algum merge na main.

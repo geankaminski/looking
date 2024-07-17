@@ -1,5 +1,6 @@
 /* 
-  Concentrei todas as ações relacionadas a hotéis neste store. Para projetos maiores separaria em módulos.
+  Concentrei todas as ações relacionadas a hotéis neste store. Para projetos maiores separaria em módulos de 
+  busca, favoritos, hotéis, notificações, etc.
 
   GETTERS
   getSortedHotels: Retorna os hotéis ordenados por preço e/ou avaliação.

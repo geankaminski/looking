@@ -1,6 +1,6 @@
 /*
-Optei por manter todas as interfaces em um só arquivo pela brevidade do projeto. 
-Para projetos maiores é interessante separar as entidades em arquivos específicos.
+  Optei por manter todas as interfaces em um só arquivo pela brevidade e prazo do projeto. 
+  Para projetos maiores é interessante separar as entidades em arquivos específicos.
 */
 
 export interface Hotel {
