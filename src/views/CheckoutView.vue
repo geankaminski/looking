@@ -40,7 +40,7 @@ onMounted(() => {
 
 <template>
   <div class="p-12 pt-8 md:p-4">
-    <PageTitle title="Checkout" showBackArrow />
+    <PageTitle title="Checkout" :showBackArrow="true" />
 
     <section>
       <div class="container flex flex-rol md:flex-col mt-8 gap-4">

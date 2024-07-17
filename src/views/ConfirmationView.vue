@@ -8,12 +8,12 @@ import PageTitle from '@/components/PageTitle.vue'
 <template>
   <section>
     <div class="p-12 pt-8 md:p-4">
-      <PageTitle title="Aguardando confirmação" :showBackArrow="false" />
+      <PageTitle title="Waiting for confirmation" :showBackArrow="false" />
 
       <div class="container mx-auto px-4 mt-12">
         <div class="flex flex-col justify-between items-center">
           <p class="text-3xl font-semibold text-primary md:text-3xl text-center">
-            Seu pedido foi realizado com sucesso!
+            Your reservation is being processed
           </p>
 
           <div class="flex items-center justify-center mt-16">
@@ -22,13 +22,12 @@ import PageTitle from '@/components/PageTitle.vue'
 
           <div class="text-center mt-16">
             <p class="text-sm text-gray md:text-base">
-              Em breve você será notificado com a confirmação da sua reserva.
+              You will soon be notified with confirmation of your reservation.
             </p>
 
             <p class="text-sm text-gray md:text-base">
-              Você pode aguardar nessa página ou voltar para a
-              <span class="text-link"> <router-link to="/">página inicial</router-link></span
-              >.
+              You can wait here or go back to the
+              <span class="text-link"> <router-link to="/">home</router-link></span>
             </p>
           </div>
         </div>

@@ -15,21 +15,21 @@ const favorites = ref(hotelsStore.getFavorites)
 
 <template>
   <div class="p-12 pt-8 md:p-4">
-    <PageTitle title="Favoritos" showBackArrow />
+    <PageTitle title="Favorites" :showBackArrow="true" />
 
     <div v-if="!favorites.length" class="text-center mt-8">
-      <p class="font-semibold mb-2">Você ainda não tem favoritos.</p>
+      <p class="font-semibold mb-2">You don't have any favorites yet</p>
     </div>
 
     <div v-else>
       <div class="text-center mb-4">
         <p class="font-semibold mb-2">
           <FontAwesomeIcon :icon="faDollarSign" class="text-green" />
-          Preço mais baixo: {{ hotelsStore.lowestPriceHotelFromFavorites.name }}
+          Lowest price: {{ hotelsStore.lowestPriceHotelFromFavorites.name }}
         </p>
         <p class="font-semibold">
           <FontAwesomeIcon :icon="faStar" class="text-yellow" />
-          Melhor avaliação: {{ hotelsStore.bestRatingHotelFromFavorites.name }}
+          Best rating: {{ hotelsStore.bestRatingHotelFromFavorites.name }}
         </p>
       </div>
 

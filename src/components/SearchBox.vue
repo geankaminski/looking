@@ -63,19 +63,19 @@ const validateSearch = () => {
   <div class="flex items-center justify-center p-12 md:p-4">
     <div class="mx-auto w-full max-w-[550px] bg-white border border-primary rounded-md shadow-form">
       <form @submit.prevent="handleSearch" class="p-8 bg-white rounded-md shadow-form">
-        <h2 class="text-2xl font-semibold text-center mb-3">Encontre hotéis</h2>
+        <h2 class="text-2xl font-semibold text-center mb-3">Find hotels</h2>
 
         <BaseInput
-          label="Destino"
+          label="Location"
           v-model="userSearch.location"
           type="text"
-          placeholder="São Paulo"
+          placeholder="Shire"
           :error="errors.location"
           @update:model="userSearch.location = $event"
         />
 
         <BaseCounter
-          label="Hóspedes"
+          label="Guests"
           :number="userSearch.guests"
           @increment="userSearch.guests++"
           @decrement="userSearch.guests--"
@@ -83,7 +83,7 @@ const validateSearch = () => {
         />
 
         <BaseCounter
-          label="Quartos"
+          label="Rooms"
           :number="userSearch.rooms"
           @increment="userSearch.rooms++"
           @decrement="userSearch.rooms--"
@@ -93,7 +93,7 @@ const validateSearch = () => {
         <div class="-mx-3 flex flex-wrap flex-row md:flex-col">
           <div class="w-full px-3">
             <BaseInput
-              label="Data de entrada"
+              label="Check-in"
               v-model="userSearch.checkIn"
               type="date"
               :error="errors.checkIn"
@@ -104,7 +104,7 @@ const validateSearch = () => {
           </div>
           <div class="w-full px-3">
             <BaseInput
-              label="Data de saída"
+              label="Check-out"
               v-model="userSearch.checkOut"
               :min="userSearch.checkIn"
               type="date"
@@ -116,7 +116,7 @@ const validateSearch = () => {
         </div>
 
         <div>
-          <BaseButton type="submit" :loading="loading" :disabled="loading" label="Buscar hoteis" />
+          <BaseButton type="submit" :loading="loading" :disabled="loading" label="Search" />
         </div>
       </form>
     </div>

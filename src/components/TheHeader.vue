@@ -79,7 +79,7 @@ const handleNotificationClick = (id: number) => {
         class="notifications-popup absolute top-12 right-20 w-80 bg-white border rounded-lg shadow-lg p-4"
       >
         <div class="flex justify-between items-center">
-          <h2 class="text-lg font-semibold">Notificações</h2>
+          <h2 class="text-lg font-semibold">Notifications</h2>
         </div>
         <div class="mt-4" v-if="notifications.length">
           <div
@@ -94,7 +94,7 @@ const handleNotificationClick = (id: number) => {
             </div>
           </div>
         </div>
-        <p v-else class="text-hint">Nenhuma notificação no momento</p>
+        <p v-else class="text-hint">No new notifications</p>
       </div>
 
       <button

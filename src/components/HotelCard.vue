@@ -82,13 +82,13 @@ const props = defineProps<{
         </div>
 
         <div class="text-3xl font-bold text-primary">
-          {{ formatMoney(props.hotel.price) }} <span class="text-xs text-hint">diária</span>
+          {{ formatMoney(props.hotel.price) }} <span class="text-xs text-hint">/ night</span>
         </div>
       </div>
 
       <BaseButton
         @click="router.push({ name: 'checkout', params: { id: props.hotel.id } })"
-        label="Add to cart"
+        label="Book now"
       />
     </div>
   </div>

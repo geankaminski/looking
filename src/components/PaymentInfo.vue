@@ -59,15 +59,15 @@ const validatePayment = () => {
 <template>
   <div class="w-full">
     <div class="bg-white p-8 bg-white border rounded-lg shadow">
-      <h2 class="text-xl font-semibold text-primary">Pagamento</h2>
+      <h2 class="text-xl font-semibold text-primary">Payment</h2>
 
       <div class="mt-4">
         <BaseInput
-          label="Nome"
+          label="Name"
           modelValue=""
           type="text"
           :error="errors.name"
-          placeholder="Nome"
+          placeholder="Name"
           v-model="userData.name"
           @update:model="userData.name = $event"
         />
@@ -83,7 +83,7 @@ const validatePayment = () => {
         />
 
         <BaseInput
-          label="Número do cartão"
+          label="Card number"
           modelValue=""
           type="text"
           :error="errors.cardNumber"
@@ -94,11 +94,11 @@ const validatePayment = () => {
         />
 
         <BaseInput
-          label="Nome no cartão"
+          label="Card name"
           modelValue=""
           type="text"
           :error="errors.cardName"
-          placeholder="Nome no cartão"
+          placeholder="Name on card"
           v-model="userData.cardName"
           @update:model="userData.cardName = $event"
         />
@@ -106,7 +106,7 @@ const validatePayment = () => {
         <div class="flex gap-4">
           <div class="w-1/2">
             <BaseInput
-              label="Data de expiração"
+              label="Expiration"
               modelValue=""
               type="text"
               :error="errors.expiration"
@@ -132,7 +132,7 @@ const validatePayment = () => {
         </div>
       </div>
 
-      <BaseButton label="Realizar reserva" @click="handleSubmit" />
+      <BaseButton label="Confirm payment" @click="handleSubmit" />
     </div>
   </div>
 </template>

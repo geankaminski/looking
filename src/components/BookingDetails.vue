@@ -25,9 +25,9 @@ watch(() => props.hotel.price, updateCounter)
 <template>
   <div class="w-full" v-if="props.hotel">
     <div class="bg-white p-5 bg-white border rounded-lg shadow">
-      <h2 class="text-xl font-semibold text-primary">Detalhes do pedido</h2>
+      <h2 class="text-xl font-semibold text-primary">Booking details</h2>
       <div class="flex items-center justify-between mt-4">
-        <div class="flex items center">
+        <div class="flex items-center">
           <img
             src="https://picsum.photos/500/300"
             alt="product image"
@@ -39,22 +39,23 @@ watch(() => props.hotel.price, updateCounter)
             </h3>
             <p class="text-sm date-info">
               {{ formatDate(props.search.checkIn) }} - {{ formatDate(props.search.checkOut) }} |
-              {{ getDays(props.search.checkIn, props.search.checkOut) }} dias
+              {{ getDays(props.search.checkIn, props.search.checkOut) }} days
             </p>
             <p class="text-sm date-info">
               {{ formatMoney(props.hotel.price) }}
-              por noite
+              by night
             </p>
             <p class="text-sm guests-info">
-              {{ props.search.guests }} hóspedes e {{ props.search.rooms }} quartos
+              {{ props.search.guests }} {{ props.search.guests > 1 ? 'guests' : 'guest' }} and
+              {{ props.search.rooms }} {{ props.search.rooms > 1 ? 'rooms' : 'room' }}
             </p>
           </div>
         </div>
       </div>
       <div class="flex items-center justify-end mt-4 font-semibold">
         <p class="total-price">
-          Total: {{ formatMoney(count * getDays(props.search.checkIn, props.search.checkOut)) }} -
-          taxas incluídas
+          Total: {{ formatMoney(count * getDays(props.search.checkIn, props.search.checkOut)) }}
+          <span class="text-sm text-hint">taxes included</span>
         </p>
       </div>
     </div>

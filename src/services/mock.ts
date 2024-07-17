@@ -1,3 +1,7 @@
+/* 
+ Aqui temos funções de serviço mockadas que simulam a obtenção de dados de um servidor remoto.
+*/
+
 const hotels = [
   {
     id: '1',

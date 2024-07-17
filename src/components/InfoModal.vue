@@ -25,7 +25,7 @@ function handleClose() {
       <div class="modal-container p-8 bg-white" ref="target">
         <div class="modal-header mb-6">
           <slot name="header">
-            <h4 class="text-2xl font-semibold text-center">Reserva confirmada!</h4>
+            <h4 class="text-2xl font-semibold text-center">Book confirmed!</h4>
 
             <div class="flex items-center justify-center mt-6">
               <FontAwesomeIcon :icon="faCircleCheck" class="text-7xl text-green" />
@@ -35,13 +35,13 @@ function handleClose() {
 
         <div class="modal-body mb-4">
           <slot name="content">
-            <p class="text-center">Você receberá um email com os detalhes da sua reserva.</p>
+            <p class="text-center">You will receive an email with the details.</p>
           </slot>
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
-            <BaseButton @click="handleClose" label="Fechar" class="close-button" />
+            <BaseButton @click="handleClose" label="Close" class="close-button" />
           </slot>
         </div>
       </div>
