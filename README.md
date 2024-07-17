@@ -12,7 +12,7 @@ Os hóteis exibidos podem ser reservados ou adicionados aos favoritos.
 Na tela de favoritos o usuário pode comparar as opções previamente selecionadas.
 A tela de pagamento exibe os detalhes da reserva e o formulário de pagamento.
 
-![Resultados do Lighthouse](https://exemplo.com/logo.png)
+![Resultados do Lighthouse]([https://exemplo.com/logo.png](https://github.com/geankaminski/looking/blob/main/lighthouse.png))
 
 # CI/CD
 
